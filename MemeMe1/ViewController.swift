@@ -7,6 +7,7 @@
 
 import UIKit
 import CropViewController
+import Photos
 
 class ViewController: UIViewController {
     @IBOutlet weak var topTextField: UITextField!
@@ -77,6 +78,31 @@ class ViewController: UIViewController {
         bottomTextField.text = meme.bottomText
         imageView.image = meme.image
         shareButton.isEnabled = meme.isReadyToShare()
+    }
+    
+    func shareAndSaveMeme(croppedImage: UIImage) {
+        meme.memedImage = croppedImage
+        
+        if let memedImage = meme.memedImage {
+            let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+
+            activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                if completed {
+                    // Save image to album
+                    PHPhotoLibrary.requestAuthorization { status in
+                        if status == .authorized {
+                            UIImageWriteToSavedPhotosAlbum(memedImage, nil, nil, nil)
+                        }
+                    }
+                } else {
+                    // User canceled activity
+                }
+            }
+            self.present(activityViewController, animated: true, completion: nil)
+            
+            // Saving the meme to the shared model
+            (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        }
     }
     
     private func setupKeyboardNotifications() {
