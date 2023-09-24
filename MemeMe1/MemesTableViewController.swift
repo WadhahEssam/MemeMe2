@@ -25,7 +25,8 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func addTapped() {
         let createMemeViewController = storyboard?.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController;
-        navigationController?.pushViewController(createMemeViewController, animated: true)
+        createMemeViewController.modalPresentationStyle = .fullScreen
+        self.present(createMemeViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -36,7 +36,8 @@ class MemeCollectionViewController: UICollectionViewController {
     
     @objc func addTapped() {
         let createMemeViewController = storyboard?.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController;
-        navigationController?.pushViewController(createMemeViewController, animated: true)
+        createMemeViewController.modalPresentationStyle = .fullScreen
+        self.present(createMemeViewController, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

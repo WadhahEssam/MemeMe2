@@ -43,6 +43,11 @@ class CreateMemeViewController: UIViewController {
         return .lightContent
     }
     
+    
+    @IBAction func handleClose(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func handleOpenPicker(_ sender: UIButton) {
         let imagePickerController = UIImagePickerController()
         imagePickerDelegate.viewController = self
