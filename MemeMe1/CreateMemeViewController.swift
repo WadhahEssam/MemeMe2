@@ -9,7 +9,7 @@ import UIKit
 import CropViewController
 import Photos
 
-class ViewController: UIViewController {
+class CreateMemeViewController: UIViewController {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var albumButton: UIButton!

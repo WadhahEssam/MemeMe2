@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ImagePickerDelegate: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    weak var viewController: ViewController!
+    weak var viewController: CreateMemeViewController!
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     

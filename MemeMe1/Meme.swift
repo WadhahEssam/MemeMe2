@@ -18,7 +18,8 @@ struct Meme {
         }
     }
     func isReadyToShare() -> Bool {
-        return !isPlaceHolderImage && topText != "TOP" && bottomText != "BOTTOM";
+        return true
+//        return !isPlaceHolderImage && topText != "TOP" && bottomText != "BOTTOM";
     }
     var memedImage: UIImage?
 }

@@ -10,7 +10,7 @@ import UIKit
 import CropViewController
 
 class CropImageDelegate: NSObject, CropViewControllerDelegate {
-    weak var viewController: ViewController!
+    weak var viewController: CreateMemeViewController!
     
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         cropViewController.dismiss(animated: true)

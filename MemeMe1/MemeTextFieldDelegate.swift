@@ -10,7 +10,7 @@ import UIKit
 
 class MemeTextFieldDelegate: NSObject, UITextFieldDelegate {
     var initialText: String!
-    weak var viewController: ViewController?
+    weak var viewController: CreateMemeViewController?
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         initialText = textField.text
