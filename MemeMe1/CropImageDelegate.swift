@@ -14,6 +14,6 @@ class CropImageDelegate: NSObject, CropViewControllerDelegate {
     
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         cropViewController.dismiss(animated: true)
-        viewController?.shareAndSaveMeme(croppedImage: image)
+        viewController?.shareAndSaveMeme(croppedImage: image, memedImage: cropViewController.image)
     }
 }

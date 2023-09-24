@@ -47,9 +47,16 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionCell", for: indexPath) as! MemeCollectionViewCell
         
-        cell.memedImage.image = memes[indexPath.row].memedImage
+        cell.memedImage.image = memes[indexPath.row].croppedMemedImage
         cell.memedImage.contentMode = .scaleToFill
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let createMemeViewController = storyboard?.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
+        createMemeViewController.meme = memes[indexPath.row]
+        createMemeViewController.modalPresentationStyle = .fullScreen
+        present(createMemeViewController, animated: true, completion: nil)
     }
 }

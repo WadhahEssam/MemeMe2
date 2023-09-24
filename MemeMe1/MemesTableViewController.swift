@@ -39,7 +39,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         cell.imageView?.frame = CGRect(x: 0, y: 0, width: 80, height: 980)
         cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.image = meme.memedImage
+        cell.imageView?.image = meme.croppedMemedImage
         
         cell.textLabel?.text = "\(meme.topText!) \(meme.bottomText!)"
         
@@ -50,5 +50,11 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return 90;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let createMemeViewController = storyboard?.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController
+        createMemeViewController.meme = memes[indexPath.row]
+        createMemeViewController.modalPresentationStyle = .fullScreen
+        present(createMemeViewController, animated: true, completion: nil)
+    }
     
 }

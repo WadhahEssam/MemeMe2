@@ -85,8 +85,9 @@ class CreateMemeViewController: UIViewController {
         shareButton.isEnabled = meme.isReadyToShare()
     }
     
-    func shareAndSaveMeme(croppedImage: UIImage) {
-        meme.memedImage = croppedImage
+    func shareAndSaveMeme(croppedImage: UIImage, memedImage: UIImage) {
+        meme.memedImage = memedImage
+        meme.croppedMemedImage = croppedImage
         
         if let memedImage = meme.memedImage {
             let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -97,6 +98,13 @@ class CreateMemeViewController: UIViewController {
                     PHPhotoLibrary.requestAuthorization { status in
                         if status == .authorized {
                             UIImageWriteToSavedPhotosAlbum(memedImage, nil, nil, nil)
+                            // Saving the meme to the shared model
+                            DispatchQueue.main.async {
+                                // since UIApplication.delegate can only be called from main thread
+                                // this callback is considered a different thread
+                                (UIApplication.shared.delegate as! AppDelegate).memes.append(self.meme)
+                                self.dismiss(animated: true)
+                            }
                         }
                     }
                 } else {
@@ -104,9 +112,6 @@ class CreateMemeViewController: UIViewController {
                 }
             }
             self.present(activityViewController, animated: true, completion: nil)
-            
-            // Saving the meme to the shared model
-            (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
         }
     }
     
