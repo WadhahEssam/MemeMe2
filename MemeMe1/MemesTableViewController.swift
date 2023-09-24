@@ -36,8 +36,8 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let meme = memes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell")!
         
-        cell.imageView?.frame = CGRect(x: 0, y: 0, width: 90, height: 90)
-        cell.imageView?.contentMode = .scaleToFill
+        cell.imageView?.frame = CGRect(x: 0, y: 0, width: 80, height: 980)
+        cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.image = meme.memedImage
         
         cell.textLabel?.text = "\(meme.topText!) \(meme.bottomText!)"
@@ -46,7 +46,7 @@ class MemesTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100;
+        return 90;
     }
     
     

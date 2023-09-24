@@ -7,18 +7,30 @@
 
 import UIKit
 
-class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MemeCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme]! {
         return ((UIApplication.shared.delegate) as! AppDelegate).memes
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let space: CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        collection.collectionViewLayout.invalidateLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print(memes.count)
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addButton
+        
         collection.reloadData()
     }
     
@@ -26,39 +38,17 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         let createMemeViewController = storyboard?.instantiateViewController(withIdentifier: "CreateMemeViewController") as! CreateMemeViewController;
         navigationController?.pushViewController(createMemeViewController, animated: true)
     }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionCell", for: indexPath) as! MemeCollectionViewCell
         
         cell.memedImage.image = memes[indexPath.row].memedImage
         cell.memedImage.contentMode = .scaleToFill
-    
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return memes.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let meme = memes[indexPath.row]
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell")!
-//
-//        cell.imageView?.frame = CGRect(x: 0, y: 0, width: 90, height: 90)
-//        cell.imageView?.contentMode = .scaleAspectFill
-//        cell.imageView?.image = meme.memedImage
-//
-//        cell.textLabel?.text = "\(meme.topText!) \(meme.bottomText!)"
-//
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100;
-//    }
 }
