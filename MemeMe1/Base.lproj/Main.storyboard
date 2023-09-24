@@ -148,11 +148,11 @@
             </objects>
             <point key="canvasLocation" x="-1146" y="781"/>
         </scene>
-        <!--Item-->
+        <!--Grid-->
         <scene sceneID="P2o-Hr-QbM">
             <objects>
                 <navigationController id="JCT-5b-AO6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="fr4-gl-ZW0"/>
+                    <tabBarItem key="tabBarItem" title="Grid" image="square.grid.3x3.fill" catalog="system" id="fr4-gl-ZW0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Aze-Zp-cN4">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -214,11 +214,11 @@
             </objects>
             <point key="canvasLocation" x="723" y="1218"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="Whe-Ra-Ulh">
             <objects>
                 <navigationController id="mgN-We-C9c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1Px-pc-Cs0"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.bullet.rectangle.fill" catalog="system" id="1Px-pc-Cs0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FpT-pl-25A">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -281,9 +281,11 @@
     <resources>
         <image name="Placeholder" width="788" height="1646"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="person.2.crop.square.stack.fill" catalog="system" width="112" height="128"/>
         <image name="repeat" catalog="system" width="128" height="98"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
+        <image name="square.grid.3x3.fill" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
